@@ -8,9 +8,9 @@ import jakarta.persistence.Table;
 @Table(name = "authors")
 public class Author extends BaseEntity {
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", nullable = false)
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "last_name", nullable = false)
     private String lastName;
 
     public Author() {
