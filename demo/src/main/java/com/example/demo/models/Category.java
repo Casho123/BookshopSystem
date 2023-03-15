@@ -1,6 +1,7 @@
 package com.example.demo.models;
 
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
@@ -8,6 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "categories")
 public class Category extends BaseEntity {
 
+    @Column(nullable = false, unique = true)
     private String name;
 
 
