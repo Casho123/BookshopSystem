@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -32,6 +33,7 @@ public class Book extends BaseEntity {
 
 
     public Book() {
+        this.categories = new HashSet<>();
     }
 
     public String getTitle() {
