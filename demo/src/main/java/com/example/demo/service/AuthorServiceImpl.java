@@ -1,11 +1,14 @@
 package com.example.demo.service;
 
 import com.example.demo.categories.AuthorRepository;
+import com.example.demo.models.Author;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthorServiceImpl implements AuthorService {
@@ -27,7 +30,15 @@ public class AuthorServiceImpl implements AuthorService {
         Files.readAllLines(Path.of(AUTHORS_FILE_PATH))
                 .stream()
                 .filter(row -> !row.isEmpty())
-                .forEach();
+                .forEach(rec -> {
+                    String[] arr = rec.split("\\s+");
+                    String fName = arr[0];
+                    String lName = arr[1];
+                    Author author = new Author(fName, lName);
+                    this.authorRepository.save(author);
+
+                });
+
 
     }
 }
