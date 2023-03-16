@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 import com.example.demo.categories.CategoryRepository;
+import com.example.demo.models.Category;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -25,10 +26,18 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void seedCategories() throws IOException {
-        List<String> rows = Files.readAllLines(Path.of(CATEGORIES_FILE_PATH))
+
+        if (categoryRepository.count() > 0) {
+            return;
+        }
+
+        Files.readAllLines(Path.of(CATEGORIES_FILE_PATH))
                 .stream()
                 .filter(row -> !row.isEmpty())
-                .collect(Collectors.toList());
+                .forEach(categoryName-> {
+                    Category category = new Category(categoryName);
+                    this.categoryRepository.save(category);
+                });
 
 
 
