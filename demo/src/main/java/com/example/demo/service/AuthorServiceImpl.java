@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,4 +42,13 @@ public class AuthorServiceImpl implements AuthorService {
 
 
     }
+
+    @Override
+    public Author getRandomAuthor() {
+        long randomId = ThreadLocalRandom.current().nextLong(1, this.authorRepository.count() + 1);
+
+        return this.authorRepository.findById(randomId).orElse(null);
+    }
+
+
 }

@@ -5,6 +5,7 @@ import com.example.demo.models.enums.EditionType;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -23,7 +24,7 @@ public class Book extends BaseEntity {
     private BigDecimal price;
     private Integer copies;
     @Column(name = "release_date")
-    private Date releaseDate;
+    private LocalDate releaseDate;
     @Enumerated
     private AgeRestriction ageRestriction;
     @ManyToOne
@@ -76,11 +77,11 @@ public class Book extends BaseEntity {
         this.copies = copies;
     }
 
-    public Date getReleaseDate() {
+    public LocalDate getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
 

@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +44,15 @@ public class CategoryServiceImpl implements CategoryService {
 
 
 
+    }
+
+    @Override
+    public Set<Category> getRandomCategories() {
+        Set<Category> categories = new HashSet<>();
+        int randomInt = ThreadLocalRandom.current().nextInt(1,3);
+        long categoryRepoCount = this.categoryRepository.count();
+
+        return null;
     }
 }
 
