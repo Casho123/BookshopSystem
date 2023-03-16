@@ -53,7 +53,7 @@ public class BookServiceImpl implements BookService {
 
     private Book createBookFromInfo(String[] bookInfo) {
         EditionType editionType = EditionType.values()[Integer.parseInt(bookInfo[0])];
-        LocalDate date = LocalDate.parse(bookInfo[1], DateTimeFormatter.ofPattern("d/M/yyyy"));
+        LocalDate releaseDate = LocalDate.parse(bookInfo[1], DateTimeFormatter.ofPattern("d/M/yyyy"));
         Integer copies = Integer.parseInt(bookInfo[2]);
         BigDecimal price = new BigDecimal(bookInfo[3]);
         AgeRestriction ageRestriction = AgeRestriction.values()[Integer.parseInt(bookInfo[4])];
@@ -63,6 +63,8 @@ public class BookServiceImpl implements BookService {
         Author author = this.authorService.getRandomAuthor();
         Set<Category> categories = this.categoryService.getRandomCategories();
 
-        return null;
+        return new Book(editionType, releaseDate, copies, price, ageRestriction, title, author, categories);
+
+
     }
 }

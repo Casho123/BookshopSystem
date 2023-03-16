@@ -16,7 +16,7 @@ public class Book extends BaseEntity {
 
     @Column(length = 50, nullable = false)
     private String title;
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(columnDefinition = "TEXT")
     private String description;
     @Enumerated
     private EditionType editionType;
@@ -35,6 +35,19 @@ public class Book extends BaseEntity {
 
     public Book() {
         this.categories = new HashSet<>();
+    }
+
+    public Book(EditionType editionType, LocalDate releaseDate, Integer copies, BigDecimal price,
+                AgeRestriction ageRestriction, String title, Author author, Set<Category> categories) {
+        this.editionType = editionType;
+        this.releaseDate = releaseDate;
+        this.copies = copies;
+        this.price = price;
+        this.ageRestriction = ageRestriction;
+        this.title = title;
+        this.author = author;
+        this.categories = categories;
+
     }
 
     public String getTitle() {
