@@ -6,6 +6,8 @@ import com.example.demo.service.CategoryServiceImpl;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
+
 @Component
 public class CommandLinerRunnerImpl implements CommandLineRunner {
 
@@ -23,13 +25,12 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        seedData();
+    }
 
+    private void seedData() throws IOException {
         this.categoryService.seedCategories();
         this.authorService.seedAuthors();
         this.bookService.seedBooks();
-
-
-
-
     }
 }
