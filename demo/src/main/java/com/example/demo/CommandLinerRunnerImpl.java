@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
 @Component
 public class CommandLinerRunnerImpl implements CommandLineRunner {
@@ -16,20 +15,21 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
 
     private final CategoryServiceImpl categoryService;
     private final AuthorServiceImpl authorService;
-
     private final BookServiceImpl bookService;
+    private final BufferedReader bufferedReader;
 
-    public CommandLinerRunnerImpl(CategoryServiceImpl categoryService, AuthorServiceImpl authorService, BookServiceImpl bookService) {
+    public CommandLinerRunnerImpl(CategoryServiceImpl categoryService, AuthorServiceImpl authorService, BookServiceImpl bookService, BufferedReader bufferedReader) {
         this.categoryService = categoryService;
         this.authorService = authorService;
         this.bookService = bookService;
+        this.bufferedReader = bufferedReader;
     }
 
     @Override
     public void run(String... args) throws Exception {
         seedData();
 
-        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+
     }
 
     private void seedData() throws IOException {
