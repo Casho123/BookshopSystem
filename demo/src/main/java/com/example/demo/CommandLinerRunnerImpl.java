@@ -63,7 +63,15 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 9:
                 booksWithTitleLongerThan();
                 break;
+            case 10:
+                getTotalBookCopies();
+                break;
         }
+
+    }
+
+    private void getTotalBookCopies() {
+        this.authorService.findAllAuthorsAndTotalBookCopies().forEach(System.out::println);
 
     }
 

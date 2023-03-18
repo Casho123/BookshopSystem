@@ -109,6 +109,11 @@ public class BookServiceImpl implements BookService {
         return this.bookRepository.findBooksWithTitleLongerThan(length);
     }
 
+    @Override
+    public Long getAllBookCopiesByAuthor() {
+        return null;
+    }
+
 
     private Book createBookFromInfo(String[] bookInfo) {
         EditionType editionType = EditionType.values()[Integer.parseInt(bookInfo[0])];

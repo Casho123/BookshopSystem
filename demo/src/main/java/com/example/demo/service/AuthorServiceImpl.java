@@ -2,11 +2,13 @@ package com.example.demo.service;
 
 import com.example.demo.categories.AuthorRepository;
 import com.example.demo.models.Author;
+import com.example.demo.models.Book;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
@@ -56,6 +58,18 @@ public class AuthorServiceImpl implements AuthorService {
                 .stream()
                 .map(author -> String.format("%s %s", author.getFirstName(), author.getLastName()))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> findAllAuthorsAndTotalBookCopies() {
+        List<String> result = this.authorRepository.findAll()
+                .stream()
+                .map(author -> String.format("%s %s - %d", author.getFirstName(), author.getLastName(),
+                        author.getBooks().stream()
+                                .map(Book::getCopies)
+                                .reduce(Integer::sum).orElse(null))).collect(Collectors.toList());
+
+
     }
 
 

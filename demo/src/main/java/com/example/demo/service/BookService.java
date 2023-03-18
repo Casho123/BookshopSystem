@@ -27,4 +27,6 @@ public interface BookService {
     List<String> findBooksWhoseAuthorNameStartsWith(String input);
 
     Long findCountOfBooksWithTitleLongerThan(int length);
+
+    Long getAllBookCopiesByAuthor();
 }
