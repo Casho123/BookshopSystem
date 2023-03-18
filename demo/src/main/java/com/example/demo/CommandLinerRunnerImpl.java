@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.models.enums.AgeRestriction;
 import com.example.demo.service.AuthorServiceImpl;
 import com.example.demo.service.BookServiceImpl;
 import com.example.demo.service.CategoryServiceImpl;
@@ -29,6 +30,20 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
     public void run(String... args) throws Exception {
         seedData();
 
+        System.out.println("Select exercise number:");
+        int exerciseNumber = Integer.parseInt(bufferedReader.readLine());
+
+        switch (exerciseNumber) {
+            case 1:
+                bookTitlesByAgeRestriction();
+                break;
+        }
+
+    }
+
+    private void bookTitlesByAgeRestriction() throws IOException {
+        System.out.println("Enter age restriction:");
+        AgeRestriction ageRestriction = AgeRestriction.valueOf(bufferedReader.readLine().toUpperCase());
 
     }
 
