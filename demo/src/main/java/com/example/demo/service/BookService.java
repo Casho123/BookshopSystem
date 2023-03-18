@@ -22,4 +22,5 @@ public interface BookService {
 
     List<String> findAllBooksReleasedBeforeDate(LocalDate date);
 
+    List<String> findAllBooksThatContainString(String input);
 }

@@ -55,8 +55,16 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 6:
                 authorsNameEndsWith();
                 break;
+            case 7:
+                booksThatContainString();
         }
 
+    }
+
+    private void booksThatContainString() throws IOException {
+        String input = bufferedReader.readLine();
+        this.bookService.findAllBooksThatContainString(input)
+                .forEach(System.out::println);
     }
 
     private void authorsNameEndsWith() throws IOException {

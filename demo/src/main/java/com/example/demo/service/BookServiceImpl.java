@@ -89,6 +89,13 @@ public class BookServiceImpl implements BookService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<String> findAllBooksThatContainString(String input) {
+        return this.bookRepository.findAllBooksThatContainString(input)
+                .stream()
+                .map(Book::getTitle).collect(Collectors.toList());
+    }
+
 
     private Book createBookFromInfo(String[] bookInfo) {
         EditionType editionType = EditionType.values()[Integer.parseInt(bookInfo[0])];
