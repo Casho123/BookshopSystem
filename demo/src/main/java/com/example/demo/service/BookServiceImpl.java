@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -50,6 +51,14 @@ public class BookServiceImpl implements BookService {
 
 
     }
+
+    @Override
+    public List<String> findAllBookTitlesWithAgeRestriction(AgeRestriction ageRestriction) {
+            return this.bookRepository.findAllByAgeRestriction(ageRestriction)
+                    .stream()
+                    .map(Book::getTitle).collect(Collectors.toList());
+    }
+
 
     private Book createBookFromInfo(String[] bookInfo) {
         EditionType editionType = EditionType.values()[Integer.parseInt(bookInfo[0])];

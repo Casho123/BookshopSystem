@@ -1,6 +1,7 @@
 package com.example.demo.categories;
 
 import com.example.demo.models.Book;
+import com.example.demo.models.enums.AgeRestriction;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +12,6 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
     List<Book> findAllByReleaseDateAfter(LocalDate releaseDateAfter);
+
+    List<Book> findAllByAgeRestriction(AgeRestriction ageRestriction);
 }

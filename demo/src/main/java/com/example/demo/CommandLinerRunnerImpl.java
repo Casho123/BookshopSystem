@@ -45,6 +45,8 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
         System.out.println("Enter age restriction:");
         AgeRestriction ageRestriction = AgeRestriction.valueOf(bufferedReader.readLine().toUpperCase());
 
+        this.bookService.findAllBookTitlesWithAgeRestriction(ageRestriction).forEach(System.out::println);
+
     }
 
     private void seedData() throws IOException {
