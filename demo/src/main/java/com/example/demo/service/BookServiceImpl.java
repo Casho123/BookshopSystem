@@ -96,6 +96,14 @@ public class BookServiceImpl implements BookService {
                 .map(Book::getTitle).collect(Collectors.toList());
     }
 
+    @Override
+    public List<String> findBooksWhoseAuthorNameStartsWith(String input) {
+        return this.bookRepository.findBooksWhoseAuthorNameStartsWith(input)
+                .stream()
+                .map(book -> String.format("%s (%s %s)", book.getTitle(), book.getAuthor().getFirstName(), book.getAuthor().getLastName()))
+                .collect(Collectors.toList());
+    }
+
 
     private Book createBookFromInfo(String[] bookInfo) {
         EditionType editionType = EditionType.values()[Integer.parseInt(bookInfo[0])];

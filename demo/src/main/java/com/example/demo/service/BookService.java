@@ -23,4 +23,6 @@ public interface BookService {
     List<String> findAllBooksReleasedBeforeDate(LocalDate date);
 
     List<String> findAllBooksThatContainString(String input);
+
+    List<String> findBooksWhoseAuthorNameStartsWith(String input);
 }
