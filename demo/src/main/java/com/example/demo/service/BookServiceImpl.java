@@ -66,6 +66,14 @@ public class BookServiceImpl implements BookService {
                 .map(Book::getTitle).collect(Collectors.toList());
     }
 
+    @Override
+    public List<String> findAllByPrice(BigDecimal value1  , BigDecimal value2) {
+
+        return this.bookRepository.findAllByPriceLessThanOrGreaterThan(value1, value2)
+                .stream()
+                .map(res -> String.format("%s - $%.2f", res.getTitle(), res.getPrice())).collect(Collectors.toList());
+    }
+
 
     private Book createBookFromInfo(String[] bookInfo) {
         EditionType editionType = EditionType.values()[Integer.parseInt(bookInfo[0])];

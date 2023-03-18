@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 @Component
 public class CommandLinerRunnerImpl implements CommandLineRunner {
@@ -40,8 +41,16 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 2:
                 goldenEditionBooksWithLessThan5000Copies();
                 break;
+            case 3:
+                booksByPrice();
+                break;
         }
 
+    }
+
+    private void booksByPrice() {
+        this.bookService.findAllByPrice(new BigDecimal(5), new BigDecimal(40))
+                .forEach(System.out::println);
     }
 
     private void goldenEditionBooksWithLessThan5000Copies() {
