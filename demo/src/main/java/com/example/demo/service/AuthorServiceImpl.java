@@ -50,5 +50,13 @@ public class AuthorServiceImpl implements AuthorService {
         return this.authorRepository.findById(randomId).orElse(null);
     }
 
+    @Override
+    public List<String> findAllAuthorsWhoseNameEndsWith(String letter) {
+        return this.authorRepository.findAllWhereFirstNameEndsWith(letter)
+                .stream()
+                .map(author -> String.format("%s %s", author.getFirstName(), author.getLastName()))
+                .collect(Collectors.toList());
+    }
+
 
 }

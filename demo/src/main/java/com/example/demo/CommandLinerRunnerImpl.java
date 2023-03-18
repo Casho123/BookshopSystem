@@ -52,8 +52,17 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 5:
                 booksReleasedBeforeDate();
                 break;
+            case 6:
+                authorsNameEndsWith();
+                break;
         }
 
+    }
+
+    private void authorsNameEndsWith() throws IOException {
+        String input = bufferedReader.readLine();
+        this.authorService.findAllAuthorsWhoseNameEndsWith(input)
+                .forEach(System.out::println);
     }
 
     private void booksReleasedBeforeDate() throws IOException {
