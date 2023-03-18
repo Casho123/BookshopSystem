@@ -81,6 +81,14 @@ public class BookServiceImpl implements BookService {
                 .map(Book::getTitle).collect(Collectors.toList());
     }
 
+    @Override
+    public List<String> findAllBooksReleasedBeforeDate(LocalDate date) {
+        return this.bookRepository.findAllBooksByReleaseDateBefore(date)
+                .stream()
+                .map(book -> String.format("%s %s %.2f", book.getTitle(), book.getEditionType(), book.getPrice()))
+                .collect(Collectors.toList());
+    }
+
 
     private Book createBookFromInfo(String[] bookInfo) {
         EditionType editionType = EditionType.values()[Integer.parseInt(bookInfo[0])];

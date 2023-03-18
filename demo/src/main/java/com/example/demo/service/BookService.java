@@ -4,6 +4,7 @@ import com.example.demo.models.enums.AgeRestriction;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 public interface BookService {
@@ -18,4 +19,6 @@ public interface BookService {
     List<String> findAllByPrice(BigDecimal bigDecimal, BigDecimal bigDecimal1);
 
     List<String> findAllBooksNotReleasedInYear(int year);
+
+    List<String> findAllBooksReleasedBeforeDate(LocalDate date);
 }

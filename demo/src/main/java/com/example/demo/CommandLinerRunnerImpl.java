@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Component
 public class CommandLinerRunnerImpl implements CommandLineRunner {
@@ -47,8 +49,20 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 4:
                 booksNotReleasedInYear();
                 break;
+            case 5:
+                booksReleasedBeforeDate();
+                break;
         }
 
+    }
+
+    private void booksReleasedBeforeDate() throws IOException {
+        String input = bufferedReader.readLine();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d-M-yyyy");
+        LocalDate date = LocalDate.parse(input, formatter);
+
+        this.bookService.findAllBooksReleasedBeforeDate(date)
+                .forEach(System.out::println);
     }
 
     private void booksNotReleasedInYear() {

@@ -23,4 +23,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("SELECT b FROM Book b WHERE EXTRACT(YEAR FROM b.releaseDate) != :year")
     List<Book> findAllBooksNotReleasedInYear(int year);
+
+    List<Book> findAllBooksByReleaseDateBefore(LocalDate date);
 }
