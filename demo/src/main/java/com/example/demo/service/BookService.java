@@ -16,4 +16,6 @@ public interface BookService {
     List<String> findAllGoldenEditionBooksWithLessThan5000Copies();
 
     List<String> findAllByPrice(BigDecimal bigDecimal, BigDecimal bigDecimal1);
+
+    List<String> findAllBooksNotReleasedInYear(int year);
 }

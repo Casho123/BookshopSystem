@@ -44,8 +44,16 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 3:
                 booksByPrice();
                 break;
+            case 4:
+                booksNotReleasedInYear();
+                break;
         }
 
+    }
+
+    private void booksNotReleasedInYear() {
+        this.bookService.findAllBooksNotReleasedInYear(2000)
+                .forEach(System.out::println);
     }
 
     private void booksByPrice() {
