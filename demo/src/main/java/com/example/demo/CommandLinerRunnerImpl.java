@@ -49,7 +49,7 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
     }
 
     private void booksByPrice() {
-        this.bookService.findAllByPrice(new BigDecimal(5), new BigDecimal(40))
+        this.bookService.findAllByPrice(BigDecimal.valueOf(5), BigDecimal.valueOf(40))
                 .forEach(System.out::println);
     }
 
