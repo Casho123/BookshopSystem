@@ -60,8 +60,16 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 8:
                 booksWhoseAuthorNameStartsWith();
                 break;
+            case 9:
+                booksWithTitleLongerThan();
+                break;
         }
 
+    }
+
+    private void booksWithTitleLongerThan() throws IOException {
+        int length = Integer.parseInt(bufferedReader.readLine());
+        System.out.println(this.bookService.findCountOfBooksWithTitleLongerThan(length));;
     }
 
     private void booksWhoseAuthorNameStartsWith() throws IOException {

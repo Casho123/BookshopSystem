@@ -31,4 +31,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
     @Query("SELECT b FROM Book b JOIN Author a ON b.author = a.id WHERE a.lastName LIKE :input%")
     List<Book> findBooksWhoseAuthorNameStartsWith(String input);
+
+    @Query("SELECT COUNT(b) FROM Book b WHERE LENGTH(b.title) > :length")
+    Long findBooksWithTitleLongerThan(int length);
 }
