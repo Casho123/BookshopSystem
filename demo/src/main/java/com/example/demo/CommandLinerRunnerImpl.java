@@ -37,8 +37,17 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 1:
                 bookTitlesByAgeRestriction();
                 break;
+            case 2:
+                goldenEditionBooksWithLessThan5000Copies();
+                break;
         }
 
+    }
+
+    private void goldenEditionBooksWithLessThan5000Copies() {
+        this.bookService
+                .findAllGoldenEditionBooksWithLessThan5000Copies()
+                .forEach(System.out::println);
     }
 
     private void bookTitlesByAgeRestriction() throws IOException {
