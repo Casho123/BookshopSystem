@@ -62,7 +62,7 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public List<String> findAllAuthorsAndTotalBookCopies() {
-        List<String> result = this.authorRepository.findAll()
+        return this.authorRepository.findAll()
                 .stream()
                 .map(author -> String.format("%s %s - %d", author.getFirstName(), author.getLastName(),
                         author.getBooks().stream()
