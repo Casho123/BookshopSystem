@@ -66,8 +66,16 @@ public class CommandLinerRunnerImpl implements CommandLineRunner {
             case 10:
                 getTotalBookCopies();
                 break;
+            case 11:
+                getReducedBook();
+                break;
         }
 
+    }
+
+    private void getReducedBook() throws IOException {
+        String title = bufferedReader.readLine();;
+        System.out.println(this.bookService.findBookByTitle(title));
     }
 
     private void getTotalBookCopies() {

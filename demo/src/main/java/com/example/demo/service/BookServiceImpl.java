@@ -110,9 +110,11 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Long getAllBookCopiesByAuthor() {
-        return null;
+    public String findBookByTitle(String title) {
+        Book book = this.bookRepository.findBookByTitle(title);
+        return String.format("%s %s %s %.2f", book.getTitle(), book.getEditionType(), book.getAgeRestriction(), book.getPrice());
     }
+
 
 
     private Book createBookFromInfo(String[] bookInfo) {

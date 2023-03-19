@@ -28,5 +28,6 @@ public interface BookService {
 
     Long findCountOfBooksWithTitleLongerThan(int length);
 
-    Long getAllBookCopiesByAuthor();
+
+    String findBookByTitle(String title);
 }
